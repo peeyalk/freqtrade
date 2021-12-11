@@ -4,9 +4,9 @@ dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 cd ${dir}
 
 # get latest version of NFI
-wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/NostalgiaForInfinityX.py' -O user_data/strategies/NostalgiaForInfinityX.py
-wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/NostalgiaForInfinityNext.py' -O user_data/strategies/NostalgiaForInfinityNext.py
-wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/NostalgiaForInfinityNextGen.py' -O user_data/strategies/NostalgiaForInfinityNextGen.py
+# wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/NostalgiaForInfinityX.py' -O user_data/strategies/NostalgiaForInfinityX.py
+# wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/NostalgiaForInfinityNext.py' -O user_data/strategies/NostalgiaForInfinityNext.py
+# wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/NostalgiaForInfinityNextGen.py' -O user_data/strategies/NostalgiaForInfinityNextGen.py
 
 docker-compose run \
 	--rm freqtrade download-data \
@@ -16,10 +16,9 @@ docker-compose run \
 	--timeframes {5m,15m,1h,1d,4h} 
 
 docker-compose run --rm freqtrade backtesting \
-	--config /freqtrade/user_data/configs/config.json \
-	--config /freqtrade/user_data/configs/config-prd.json \
-	--config /freqtrade/user_data/configs/config-whitelist-all.json \
-	--datadir user_data/data/binance \
-	--export trades \
-	--stake-amount unlimited \
-	--strategy-list Zeus 
+        --config /freqtrade/user_data/configs/config.json \
+        --config /freqtrade/user_data/configs/config-prd.json \
+        --config /freqtrade/user_data/configs/config-whitelist-all.json \
+        --datadir user_data/data/binance \
+        --export trades \
+        --strategy-list Zeus
