@@ -4,7 +4,7 @@
       "method": "VolumePairList",
       "number_assets": 80,
       "sort_key": "quoteVolume",
-      "refresh_period": 600
+      "refresh_period": 3600
     },
     { "method": "AgeFilter", "min_days_listed": 14 },
     { "method": "SpreadFilter", "max_spread_ratio": 0.005 },
@@ -12,7 +12,7 @@
       "method": "RangeStabilityFilter",
       "lookback_days": 3,
       "min_rate_of_change": 0.05,
-      "refresh_period": 600
+      "refresh_period": 3600
     },
     {
       "method": "VolatilityFilter",

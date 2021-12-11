@@ -1,6 +1,6 @@
 #! /bin/bash -e
 
-dir="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 cd ${dir}
 
 # get latest version of NFI
@@ -8,12 +8,18 @@ wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/Nost
 wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/NostalgiaForInfinityNext.py' -O user_data/strategies/NostalgiaForInfinityNext.py
 wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/NostalgiaForInfinityNextGen.py' -O user_data/strategies/NostalgiaForInfinityNextGen.py
 
+docker-compose run \
+	--rm freqtrade download-data \
+	--erase \
+	--config /freqtrade/user_data/configs/config-whitelist-all.json \
+	--exchange binance \
+	--timeframes {5m,15m,1h,1d} 
 
-timeframes=("5m" "15m" "1h" "1d")
-
-for tf in ${timeframes[@]}; do
-	docker-compose run --rm freqtrade download-data --erase --config /freqtrade/user_data/configs/config-whitelist.json --exchange binance -t ${tf}
-done
-
-
-docker-compose run --rm freqtrade backtesting --config /freqtrade/user_data/configs/config.json --config /freqtrade/user_data/configs/config-whitelist-all.json --datadir user_data/data/binance --export trades  --stake-amount 200 -s NostalgiaForInfinityX
+docker-compose run --rm freqtrade backtesting \
+	--config /freqtrade/user_data/configs/config.json \
+	--config /freqtrade/user_data/configs/config-whitelist-all.json \
+	--datadir user_data/data/binance \
+	--export trades \
+	--stake-amount unlimited \
+	--strategy-list NostalgiaForInfinityX \
+	--timeframe 5m 
