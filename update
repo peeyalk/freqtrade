@@ -15,6 +15,6 @@ docker-compose pull
 # Build Docker Image
 docker-compose build
 # Shut down the currect container
-docker-compose down 
+# docker-compose down 
 # Start the container daemon
 docker-compose up -d
