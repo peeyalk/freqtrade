@@ -16,4 +16,4 @@ for tf in ${timeframes[@]}; do
 done
 
 
-docker-compose run --rm freqtrade backtesting --config /freqtrade/user_data/configs/config.json --config /freqtrade/user_data/configs/config-whitelist.json --config /freqtrade/user_data/configs/config-blacklist.json --datadir user_data/data/binance --export trades  --stake-amount 200 -s NostalgiaForInfinityX
+docker-compose run --rm freqtrade backtesting --config /freqtrade/user_data/configs/config.json --config /freqtrade/user_data/configs/config-whitelist-all.json --datadir user_data/data/binance --export trades  --stake-amount 200 -s NostalgiaForInfinityX
