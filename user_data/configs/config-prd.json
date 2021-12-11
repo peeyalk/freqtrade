@@ -1,0 +1,8 @@
+{
+  "dry_run": true,
+  "exchange": {
+    "name": "binance",
+    "key": "",
+    "secret": ""
+  }
+}
