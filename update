@@ -4,12 +4,16 @@ dir="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 cd ${dir}
 
 # get latest version of NFI
-wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/NostalgiaForInfinityX.py' -O user_data/strategies/NostalgiaForInfinityX.py
-wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/NostalgiaForInfinityNext.py' -O user_data/strategies/NostalgiaForInfinityNext.py
-wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/NostalgiaForInfinityNextGen.py' -O user_data/strategies/NostalgiaForInfinityNextGen.py
+# wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/NostalgiaForInfinityX.py' -O user_data/strategies/NostalgiaForInfinityX.py
+# wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/NostalgiaForInfinityNext.py' -O user_data/strategies/NostalgiaForInfinityNext.py
+# wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/NostalgiaForInfinityNextGen.py' -O user_data/strategies/NostalgiaForInfinityNextGen.py
 
+# get the latest source code
+git pull
 # Pull latest version of freqtrade
 docker-compose pull
+# Build Docker Image
+docker-compose build
 # Shut down the currect container
 docker-compose down 
 # Start the container daemon
