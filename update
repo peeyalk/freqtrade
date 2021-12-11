@@ -8,6 +8,8 @@ wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/Nost
 wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/NostalgiaForInfinityNext.py' -O user_data/strategies/NostalgiaForInfinityNext.py
 wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/NostalgiaForInfinityNextGen.py' -O user_data/strategies/NostalgiaForInfinityNextGen.py
 
+# get the latest files
+git pull
 # Pull latest version of freqtrade
 docker-compose pull
 # Shut down the currect container
