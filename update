@@ -1,10 +1,11 @@
 #! /bin/bash -e
 
-# get environment variables
-source .env
-
+# get the directory of the current script
 dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 cd ${dir}
+
+# get environment variables
+source .env
 
 # get latest version of NFI
 wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/NostalgiaForInfinityX.py' -O user_data/strategies/NostalgiaForInfinityX.py
