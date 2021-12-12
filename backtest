@@ -11,19 +11,22 @@ wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/Nost
 wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinityData/main/binance-usdt-static.json' -O user_data/configs/config-usdt-static.json
 
 # download the latest data
-docker-compose run \
-	--rm freqtrade download-data \
-	--erase \
-	--config /freqtrade/user_data/configs/config-usdt-static.json \
-	--exchange binance \
-	--timeframes {5m,15m,1h,1d} 
-
-# run backtes
+if [ ! -z $1 ]; then
+	docker-compose run \
+		--rm freqtrade download-data \
+		--erase \
+		--config /freqtrade/user_data/configs/config-usdt-static.json \
+		--exchange binance \
+		--timeframes {5m,15m,1h,1d}
+		# --timerange=20211103-20211212 \
+fi
+# run backtest
 docker-compose run --rm freqtrade backtesting \
-        --config /freqtrade/user_data/configs/config.json \
-        --config /freqtrade/user_data/configs/config-prd.json \
-        --config /freqtrade/user_data/configs/config-usdt-static.json \
-        --datadir user_data/data/binance \
-        --export trades \
-		--timeframe 5m \
-        --strategy-list NostalgiaForInfinityX
+	--config /freqtrade/user_data/configs/config.json \
+	--config /freqtrade/user_data/configs/config-prd.json \
+	--config /freqtrade/user_data/configs/config-usdt-static.json \
+	--datadir user_data/data/binance \
+	--export trades \
+	--timeframe 5m \
+	--strategy-list NostalgiaForInfinityX
+	# --timerange=20211103-20211212 \
