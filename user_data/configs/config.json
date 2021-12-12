@@ -9,18 +9,7 @@
   "cancel_open_orders_on_exit": false,
   "unfilledtimeout": {
     "buy": 10,
-    "sell": 10,
-    "unit": "minutes"
-  },
-  "order_types": {
-    "buy": "limit",
-    "sell": "limit",
-    "emergencysell": "limit",
-    "forcebuy": "limit",
-    "forcesell": "limit",
-    "stoploss": "limit",
-    "stoploss_on_exchange": false,
-    "stoploss_on_exchange_interval": 60
+    "sell": 30
   },
   "bid_strategy": {
     "price_side": "ask",
