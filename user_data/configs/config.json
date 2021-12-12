@@ -1,17 +1,26 @@
 {
   "max_open_trades": 4,
   "stake_currency": "USDT",
-  "timeframe": "15m",
   "stake_amount": "unlimited",
   "tradable_balance_ratio": 0.99,
   "fiat_display_currency": "USD",
   "dry_run": true,
-  "dry_run_wallet": 422,
+  "dry_run_wallet": 1000,
   "cancel_open_orders_on_exit": false,
   "unfilledtimeout": {
     "buy": 10,
     "sell": 30,
     "unit": "minutes"
+  },
+  "order_types": {
+    "buy": "limit",
+    "sell": "limit",
+    "emergencysell": "limit",
+    "forcebuy": "limit",
+    "forcesell": "limit",
+    "stoploss": "limit",
+    "stoploss_on_exchange": false,
+    "stoploss_on_exchange_interval": 60
   },
   "bid_strategy": {
     "price_side": "bid",
@@ -26,11 +35,15 @@
   "ask_strategy": {
     "price_side": "ask",
     "use_order_book": true,
-    "order_book_top": 1
+    "order_book_min": 1,
+    "order_book_max": 1
   },
   "exchange": {
-    "ccxt_config": {},
-    "ccxt_async_config": {}
+    "ccxt_config": { "enableRateLimit": true },
+    "ccxt_async_config": {
+      "enableRateLimit": true,
+      "rateLimit": 200
+    }
   },
   "pairlists": [{ "method": "StaticPairList" }],
   "edge": {
@@ -58,10 +71,7 @@
     "listen_port": 8080,
     "verbosity": "error",
     "enable_openapi": false,
-    "jwt_secret_key": "dd89e90b727ee8975885a58d1138ecb744b5d6e4514882205167663ef1e6db4a",
-    "CORS_origins": [],
-    "username": "freqtrader",
-    "password": "abcD123$"
+    "CORS_origins": []
   },
   "bot_name": "freqtrade",
   "initial_state": "running",

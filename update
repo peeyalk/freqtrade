@@ -1,12 +1,24 @@
 #! /bin/bash -e
 
-dir="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+# get environment variables
+source .env
+
+dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 cd ${dir}
 
 # get latest version of NFI
-# wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/NostalgiaForInfinityX.py' -O user_data/strategies/NostalgiaForInfinityX.py
-# wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/NostalgiaForInfinityNext.py' -O user_data/strategies/NostalgiaForInfinityNext.py
-# wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/NostalgiaForInfinityNextGen.py' -O user_data/strategies/NostalgiaForInfinityNextGen.py
+wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/NostalgiaForInfinityX.py' -O user_data/strategies/NostalgiaForInfinityX.py
+wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/NostalgiaForInfinityNext.py' -O user_data/strategies/NostalgiaForInfinityNext.py
+wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/NostalgiaForInfinityNextGen.py' -O user_data/strategies/NostalgiaForInfinityNextGen.py
+# update pairlist
+wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/configs/pairlist-volume-binance-usdt.json' -O  user_data/configs/config-pairlist-volume-binance-usdt.json
+
+
+# get the refresh_token from evn
+refresh_token=${FT_REFRESH_TOKEN}
+# get the access_token
+access_token=$(curl --no-progress-meter -X POST --header "Authorization: Bearer ${refresh_token}" http://localhost:8080/api/v1/token/refresh | jq -r '.access_token')
+[[ -z ${access_token} || ${access_token} = "null" ]] && echo "Access token not found" && exit 1
 
 # get the latest source code
 git pull
@@ -15,6 +27,9 @@ docker-compose pull
 # Build Docker Image
 docker-compose build
 # Shut down the currect container
-# docker-compose down 
+# docker-compose down
 # Start the container daemon
 docker-compose up -d
+# reload-config
+sleep 30
+curl "http://localhost:8080/api/v1/reload_config" -X POST -H "Authorization: Bearer ${access_token}"

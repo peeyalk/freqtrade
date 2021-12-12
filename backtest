@@ -4,21 +4,26 @@ dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 cd ${dir}
 
 # get latest version of NFI
-# wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/NostalgiaForInfinityX.py' -O user_data/strategies/NostalgiaForInfinityX.py
-# wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/NostalgiaForInfinityNext.py' -O user_data/strategies/NostalgiaForInfinityNext.py
-# wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/NostalgiaForInfinityNextGen.py' -O user_data/strategies/NostalgiaForInfinityNextGen.py
+wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/NostalgiaForInfinityX.py' -O user_data/strategies/NostalgiaForInfinityX.py
+wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/NostalgiaForInfinityNext.py' -O user_data/strategies/NostalgiaForInfinityNext.py
+wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/NostalgiaForInfinityNextGen.py' -O user_data/strategies/NostalgiaForInfinityNextGen.py
+# Update all binance Static pairlist
+wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinityData/main/binance-usdt-static.json' -O user_data/configs/config-usdt-static.json
 
+# download the latest data
 docker-compose run \
 	--rm freqtrade download-data \
 	--erase \
-	--config /freqtrade/user_data/configs/config-whitelist-all.json \
+	--config /freqtrade/user_data/configs/config-usdt-static.json \
 	--exchange binance \
-	--timeframes {5m,15m,1h,1d,4h} 
+	--timeframes {5m,15m,1h,1d} 
 
+# run backtes
 docker-compose run --rm freqtrade backtesting \
         --config /freqtrade/user_data/configs/config.json \
         --config /freqtrade/user_data/configs/config-prd.json \
-        --config /freqtrade/user_data/configs/config-whitelist-all.json \
+        --config /freqtrade/user_data/configs/config-usdt-static.json \
         --datadir user_data/data/binance \
         --export trades \
-        --strategy-list Zeus
+		--timeframe 5m \
+        --strategy-list NostalgiaForInfinityX

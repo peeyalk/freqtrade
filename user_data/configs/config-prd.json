@@ -4,5 +4,15 @@
     "name": "binance",
     "key": "",
     "secret": ""
+  },
+  "api_server": {
+    "jwt_secret_key": "",
+    "username": "",
+    "password": ""
+  },
+  "telegram": {
+    "enabled": false,
+    "token": "",
+    "chat_id": ""
   }
 }
