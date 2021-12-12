@@ -28,9 +28,9 @@ docker-compose pull
 # Build Docker Image
 docker-compose build
 # Shut down the currect container
-# docker-compose down
+docker-compose down
 # Start the container daemon
 docker-compose up -d
 # reload-config
-sleep 5s
-curl "http://localhost:8080/api/v1/reload_config" -X POST -H "Authorization: Bearer ${access_token}"
+# sleep 5s
+# curl "http://localhost:8080/api/v1/reload_config" -X POST -H "Authorization: Bearer ${access_token}"
