@@ -1,5 +1,5 @@
 {
-  "max_open_trades": 5,
+  "max_open_trades": 6,
   "stake_currency": "USDT",
   "stake_amount": "unlimited",
   "tradable_balance_ratio": 0.99,
@@ -8,8 +8,19 @@
   "dry_run_wallet": 1000,
   "cancel_open_orders_on_exit": false,
   "unfilledtimeout": {
-    "buy": 10,
-    "sell": 30
+    "buy": 15,
+    "sell": 15,
+    "unit": "minutes"
+  },
+  "order_types": {
+    "buy": "limit",
+    "sell": "limit",
+    "emergencysell": "limit",
+    "forcebuy": "limit",
+    "forcesell": "limit",
+    "stoploss": "limit",
+    "stoploss_on_exchange": false,
+    "stoploss_on_exchange_interval": 60
   },
   "bid_strategy": {
     "price_side": "ask",
