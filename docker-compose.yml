@@ -30,4 +30,5 @@ services:
       --config /freqtrade/user_data/configs/config-whitelist.json
       --config /freqtrade/user_data/configs/config-blacklist.json
       --config /freqtrade/user_data/configs/config-pairlist-volume-binance-usdt.json
+      --config /freqtrade/user_data/strategies/Zeus.json 
       --strategy Zeus
