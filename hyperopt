@@ -1,0 +1,22 @@
+#! /bin/bash -e
+
+# download the latest data
+if [ ! -z $1 ]; then
+    docker-compose run --rm freqtrade \
+        download-data \
+        --erase \
+        --config /freqtrade/user_data/configs/config-usdt-static.json \
+        --exchange binance \
+        --timeframes {5m,15m,1h,4h,1d}
+fi
+
+# run hyperopt
+docker-compose run --rm freqtrade \
+    hyperopt \
+    --hyperopt-loss SharpeHyperOptLoss \
+    --spaces buy sell roi \
+    --strategy Zeus \
+    --epoch 1000 \
+    --config /freqtrade/user_data/configs/config.json \
+    --config /freqtrade/user_data/configs/config-prd.json \
+    --config /freqtrade/user_data/configs/config-usdt-static.json
