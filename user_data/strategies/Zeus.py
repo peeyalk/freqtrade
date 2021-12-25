@@ -36,21 +36,21 @@ class Zeus(IStrategy):
     # Buy hyperspace params:
     buy_params = {
         "buy_cat": "<R",
-        "buy_real": 0.0128,
+        "buy_real": 0.1408,
     }
 
     # Sell hyperspace params:
     sell_params = {
         "sell_cat": "=R",
-        "sell_real": 0.9455,
+        "sell_real": 0.3141,
     }
 
     # ROI table:
     minimal_roi = {
-        "0": 0.564,
-        "567": 0.273,
-        "2814": 0.12,
-        "7675": 0
+        "0": 0.348,
+        "60": 0.052,
+        "224": 0.023,
+        "556": 0
     }
 
     # Stoploss:
