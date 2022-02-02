@@ -8,6 +8,8 @@
   "dry_run": true,
   "dry_run_wallet": 1000,
   "cancel_open_orders_on_exit": false,
+  "sell_profit_only": true,
+  "sell_profit_offset": 1.0,
   "unfilledtimeout": {
     "buy": 15,
     "sell": 15,

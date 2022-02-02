@@ -8,13 +8,13 @@ cd ${dir}
 source .env
 
 # get latest version of NFI
-# wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/NostalgiaForInfinityX.py' -O user_data/strategies/NostalgiaForInfinityX.py
-# wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/NostalgiaForInfinityNext.py' -O user_data/strategies/NostalgiaForInfinityNext.py
-# wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/NostalgiaForInfinityNextGen.py' -O user_data/strategies/NostalgiaForInfinityNextGen.py
+wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/NostalgiaForInfinityX.py' -O user_data/strategies/NostalgiaForInfinityX.py
+wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/NostalgiaForInfinityNext.py' -O user_data/strategies/NostalgiaForInfinityNext.py
+wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/NostalgiaForInfinityNextGen.py' -O user_data/strategies/NostalgiaForInfinityNextGen.py
 # update pairlist
-# wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/configs/pairlist-volume-binance-usdt.json' -O  user_data/configs/config-pairlist-volume-binance-usdt.json
+wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/configs/pairlist-volume-binance-usdt.json' -O  user_data/configs/config-pairlist-volume-binance-usdt.json
 # update blacklist
-# wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/configs/blacklist-binance.json' -O  user_data/configs/config-blacklist.json
+wget 'https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/configs/blacklist-binance.json' -O  user_data/configs/config-blacklist.json
 
 # get the refresh_token from evn
 refresh_token=${FT_REFRESH_TOKEN}
