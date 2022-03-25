@@ -4,5 +4,6 @@ user_data/hyperopt*
 user_data/logs
 user_data/notebooks
 user_data/plot
+user_data/configs/config-prd.json
 *.sqlite
 .env
